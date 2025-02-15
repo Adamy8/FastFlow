@@ -1,26 +1,17 @@
-from enum import Enum
-
 from fastapi import FastAPI
-
-
-class ModelName(str, Enum):
-    alexnet = "alexnet"
-    resnet = "resnet"
-    lenet = "lenet"
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
 
-
-@app.get("/models/{model_name}")
-async def get_model(model_name: ModelName):
-    if model_name is ModelName.alexnet:
-        return {"model_name": model_name, "message": "Deep Learning FTW!"}
-
-    if model_name.value == "lenet":
-        return {"model_name": model_name, "message": "LeCNN all the images"}
-
-    return {"model_name": model_name, "message": "Have some residuals"}
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],    # only nextjs frontend url
+    # allow_origins=["*"],                      # allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
