@@ -9,7 +9,7 @@ workout_routine_association = Table(
     Column("routine_id", Integer, ForeignKey("routines.id")),
 )
 
-m
+
 # Define the User model
 class User(Base):
     __tablename__ = "users"

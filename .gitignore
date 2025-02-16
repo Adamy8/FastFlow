@@ -2,3 +2,4 @@
 fastvenv
 
 .DS_Store
+.env
