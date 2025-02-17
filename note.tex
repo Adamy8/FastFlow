@@ -1,45 +1,48 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 
-\title{note}
+\title{FastFlow Note}
 \author{Adam}
 \date{\today}
 \begin{document}
 
 \maketitle
 
-\section{Gereral tech tip}
-\large{Async functions}
-- You can only use \textbf{await} inside of functions created with \textbf{async def}.
+\section{General Tech Tips}
+\begin{enumerate}
+    \item \large{Async Functions}
+    \\- You can only use \textbf{await} inside functions created with \textbf{async def}.
 
-\large{Powerful SQLAlchemy}
-- SQLAlchemy is a powerful SQL toolkit and Object-Relational Mapping (ORM) library for Python. (a library in py)
-- use Object-Relational Maping(ORM) in python to access SQL datebase 
-- still available for raw SQL query: 
-eg.  \textbf{ result = db.execute("SELECT * FROM users WHERE id = :id", {"id": 1}) }
+    \item \large{Powerful SQLAlchemy}
+    \\- SQLAlchemy is a powerful SQL toolkit and Object-Relational Mapping (ORM) library for Python.
+    \\- Use Object-Relational Mapping (ORM) in Python to access SQL databases.
+    \\- Still available for raw SQL query: 
+    \\e.g., \textbf{result = db.execute("SELECT * FROM users WHERE id = :id", {"id": 1})}
 
-\large{success,message endpoint in fastapi => nextjs (use JSONResponse!!!)}
-- code:
-from fastapi.responses import \textbf{JSONResponse}
-from fastapi import status, HTTPException
-return JSONResponse(
-    status_code=status.HTTP_404_NOT_FOUND,
-    content={"success": False, "message": f"Workout with id {workout_id} not found or does not belong to you."}
-)
+    \item \large{Success and Message Endpoints in FastAPI to Next.js (use JSONResponse!!!)}
+    \\- Code:
+    \begin{verbatim}
+    from fastapi.responses import JSONResponse
+    from fastapi import status, HTTPException
 
-\large{the use of __init__.py}
-- An \textbf{__init__.py} file (even if empty) marks a directory as a Python package
-- It tells Python that the directory should be treated as a module package
-- Allows you to import modules from that directory
-ALSO, it used for package Initialization
-- Can contain initialization code that runs when the package is imported
-...
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={"success": False, "message": f"Workout with id {workout_id} not found or does not belong to you."}
+    )
+    \end{verbatim}
 
-\large{}
-- 
+    \item \large{The Use of \_\_init\_\_.py}
+    \\- An \textbf{\_\_init\_\_.py} file (even if empty) marks a directory as a Python package.
+    \\- It tells Python that the directory should be treated as a module package.
+    \\- Allows you to import modules from that directory.
+    \\- Used for package initialization and can contain code that runs when the package is imported.
 
-\section{specific stack}
-specific
+    \item \large{text}
+    \\- text
 
+\end{enumerate}
+
+\section{Specific Stack}
+Specific details here.
 
 \end{document}
