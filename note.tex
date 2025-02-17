@@ -18,8 +18,14 @@
 - still available for raw SQL query: 
 eg.  \textbf{ result = db.execute("SELECT * FROM users WHERE id = :id", {"id": 1}) }
 
-\large{}
-- 
+\large{success,message endpoint in fastapi => nextjs}
+- code:
+from fastapi.responses import JSONResponse
+from fastapi import status, HTTPException
+return JSONResponse(
+    status_code=status.HTTP_404_NOT_FOUND,
+    content={"success": False, "message": f"Workout with id {workout_id} not found or does not belong to you."}
+)
 
 \large{}
 - 
