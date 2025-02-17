@@ -20,11 +20,11 @@ class WorkoutCreate(WorkoutBase):
 
 @router.get("/")
 def get_workout(db:db_dependency, user: user_dependency, workout_id: int):
-    return db.query(Workout).filter(Workout.id == workout_id, Workout.user_id == user["id"]).first()
+    return db.query(Workout).filter(Workout.id == workout_id).first()   # , Workout.user_id == user["id"]    you can see others workouts
 
 @router.get("/workouts")
 def get_workouts(db:db_dependency, user: user_dependency):
-    return db.query(Workout).filter(Workout.user_id == user["id"]).all()
+    return db.query(Workout).all()      # .filter(Workout.user_id == user["id"])      you can see others workouts
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def create_workout(db:db_dependency, user: user_dependency, workout: WorkoutCreate):
@@ -36,7 +36,7 @@ def create_workout(db:db_dependency, user: user_dependency, workout: WorkoutCrea
 
 @router.delete("/")
 def delete_workout(db: db_dependency, user: user_dependency, workout_id: int):
-    workout = db.query(Workout).filter(Workout.user_id == user["id"], Workout.id == workout_id).first()
+    workout = db.query(Workout).filter(Workout.user_id == user["id"], Workout.id == workout_id).first()    # can only delete your own workouts
     if workout:
         db.delete(workout)
         db.commit()
