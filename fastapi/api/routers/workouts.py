@@ -40,4 +40,9 @@ def delete_workout(db: db_dependency, user: user_dependency, workout_id: int):
     if workout:
         db.delete(workout)
         db.commit()
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Workout with id {workout_id} not found or does not belong to you."
+        )
     return workout

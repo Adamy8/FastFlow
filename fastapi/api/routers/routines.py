@@ -41,4 +41,9 @@ def delete_routine(db: db_dependency, user: user_dependency, routine_id: int):
     if routine:
         db.delete(routine)
         db.commit()
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Routine with id {routine_id} not found or does not belong to you."
+        )
     return routine
