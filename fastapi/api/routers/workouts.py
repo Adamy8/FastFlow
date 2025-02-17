@@ -20,11 +20,11 @@ class WorkoutCreate(WorkoutBase):
 
 @router.get("/")
 def get_workout(db:db_dependency, user: user_dependency, workout_id: int):
-    return db.query(Workout).filter(Workout.id == workout_id).first()
+    return db.query(Workout).filter(Workout.id == workout_id, Workout.user_id == user["id"]).first()
 
 @router.get("/workouts")
 def get_workouts(db:db_dependency, user: user_dependency):
-    return db.query(Workout).all()
+    return db.query(Workout).filter(Workout.user_id == user["id"]).all()
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def create_workout(db:db_dependency, user: user_dependency, workout: WorkoutCreate):
@@ -36,8 +36,8 @@ def create_workout(db:db_dependency, user: user_dependency, workout: WorkoutCrea
 
 @router.delete("/")
 def delete_workout(db: db_dependency, user: user_dependency, workout_id: int):
-    workout = db.query(Workout).filter(Workout.id == workout_id).first()
-    if workout:    
+    workout = db.query(Workout).filter(Workout.user_id == user["id"], Workout.id == workout_id).first()
+    if workout:
         db.delete(workout)
         db.commit()
     return workout
