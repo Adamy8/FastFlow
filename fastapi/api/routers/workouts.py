@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-from fastapi import APIRouter, status
+from fastapi import APIRouter, status, HTTPException
 
 from api.models import Workout
 from api.deps import db_dependency, user_dependency
