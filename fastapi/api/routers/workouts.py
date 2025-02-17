@@ -18,7 +18,7 @@ class WorkoutBase(BaseModel):
 class WorkoutCreate(WorkoutBase):
     pass
 
-@router.post("/")
+@router.get("/")
 def get_workout(db:db_dependency, user: user_dependency, workout_id: int):
     return db.query(Workout).filter(Workout.id == workout_id).first()
 
