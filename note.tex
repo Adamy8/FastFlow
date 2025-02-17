@@ -18,17 +18,23 @@
 - still available for raw SQL query: 
 eg.  \textbf{ result = db.execute("SELECT * FROM users WHERE id = :id", {"id": 1}) }
 
-\large{success,message endpoint in fastapi => nextjs}
+\large{success,message endpoint in fastapi => nextjs (use JSONResponse!!!)}
 - code:
-from fastapi.responses import JSONResponse
+from fastapi.responses import \textbf{JSONResponse}
 from fastapi import status, HTTPException
 return JSONResponse(
     status_code=status.HTTP_404_NOT_FOUND,
     content={"success": False, "message": f"Workout with id {workout_id} not found or does not belong to you."}
 )
 
-\large{}
-- 
+\large{the use of __init__.py}
+- An \textbf{__init__.py} file (even if empty) marks a directory as a Python package
+- It tells Python that the directory should be treated as a module package
+- Allows you to import modules from that directory
+ALSO, it used for package Initialization
+- Can contain initialization code that runs when the package is imported
+...
+
 \large{}
 - 
 
