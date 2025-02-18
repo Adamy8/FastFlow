@@ -8,3 +8,7 @@ deactivate
 
 --When making requirements file
 pip3 freeze > requirements.txt
+
+
+Tutorial link: (1'21')
+https://www.youtube.com/watch?v=g566eI2EmeY
